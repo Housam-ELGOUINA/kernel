@@ -1,0 +1,17 @@
+NAME=kernel.bin
+
+all: $(NAME)
+
+boot.o: boot.asm
+	nasm -f elf32 boot.asm -o boot.o
+
+kernel.o: kernel.cpp
+	g++ -m32 -ffreestanding -fno-builtin -fno-exceptions -fno-stack-protector -fno-rtti -nostdlib -nodefaultlibs -c kernel.cpp -o kernel.o
+
+$(NAME): boot.o kernel.o linker.ld
+	ld -m elf_i386 -T linker.ld -o $(NAME) boot.o kernel.o
+
+clean:
+	rm -f *.o $(NAME)
+
+re: clean all
