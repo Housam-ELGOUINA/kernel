@@ -1,5 +1,7 @@
 # KFS_1 Starter
 
+Did work on a part of the kernel with a bunch of friends xD....
+
 This starter follows the mandatory requirements:
 - GRUB-compatible Multiboot header
 - ASM entry point
